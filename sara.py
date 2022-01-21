@@ -1,6 +1,6 @@
 class restaurant:
     class teacher:
-        def _init_(self,email,password,food_items):
+        def __init__(self,email,password,food_items):
             self.te_email=email
             self.te_pass=password
             self.food_items=food_items
@@ -8,16 +8,16 @@ class restaurant:
         def start(self):
             print("\nSelect one option from the following :")
             print("1.Add new food items \n2.Edit food items \n3.Show food items \n4.Remove food item \n5.Exit\n")
-            admin_input=input()
-            if admin_input=="1":
+            teacher_input=input()
+            if teacher_input=="1":
                 self.add_new_food_item()
-            elif admin_input=="2":
+            elif teacher_input=="2":
                 self.edit_food_items()
-            elif admin_input=="3":
+            elif teacher_input=="3":
                 self.show_food_items()
-            elif admin_input=="4":
+            elif teacher_input=="4":
                 self.remove_food_item()
-            elif admin_input=="5":
+            elif teacher_input=="5":
                 exit()
             else:
                 print("Please choose correct option")
