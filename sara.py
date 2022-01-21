@@ -118,7 +118,7 @@ class restaurant:
 
     class student:
         
-        def _init_(self,email,password,full_name,phone,address,food_items,prev_orders):
+        def __init__(self,email,password,full_name,phone,address,food_items,prev_orders):
             self.email = email
             self.password = password
             self.full_name = full_name
