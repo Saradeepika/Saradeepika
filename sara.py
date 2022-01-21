@@ -1,24 +1,24 @@
 import sys
 
 
-class admin:
+class Teacher:
     # name quantity price discount stock 
     def _init_(self,email,password,food_data):
-        self.ad_email=email
-        self.ad_pass=password
+        self.te_email=email
+        self.te_pass=password
         self.food_data=food_data
         self.start()
 
     def start(self):
         print("\nSelect one option from the following :")
-        print("1.Add new food items \n2.Edit food items \n3.View food items \n4.Remove a food item \n5.Exit\n")
+        print("1.Add new food items \n2.Edit food items \n3.Show food items \n4.Remove food item \n5.Exit\n")
         m=input()
         if m=="1":
             self.add_new_food_item()
         elif m=="2":
             self.edit_food_items()
         elif m=="3":
-            self.view_food_items()
+            self.show_food_items()
         elif m=="4":
             self.remove_food_item()
         elif m=="5":
@@ -104,7 +104,7 @@ class admin:
         self.start()
 
 
-    def view_food_items(self):
+    def show_food_items(self):
         print("Available food items are: ")
         for i in range(len(self.food_data)):
             print(str(i+1)+". "+self.food_data[i][0]+" ("+self.food_data[i][1]+") "+" ["+self.food_data[i][2]+"] "+
@@ -119,7 +119,7 @@ class admin:
 
 
 
-class user:
+class student:
     
     def _init_(self,email,password,full_name,phone,address,food_data,prev_orders):
         self.email = email
@@ -132,11 +132,11 @@ class user:
         self.prev_orders = prev_orders
     
     def create(self):
-        self.user_data.append(self.email)
-        self.user_data.append(self.password)
-        self.user_data.append(self.full_name)
-        self.user_data.append(self.phone)
-        self.user_data.append(self.address)
+        self.student_data.append(self.email)
+        self.student_data.append(self.password)
+        self.student_data.append(self.full_name)
+        self.student_data.append(self.phone)
+        self.student_data.append(self.address)
         self.application()
 
     def application(self):
@@ -212,27 +212,27 @@ class user:
         mm=input()
         if mm=="1":
             print("Enter new Email to update: ")
-            self.user_data[0]=input()
+            self.student_data[0]=input()
             print("Email updated successfully")
             self.update_profile()
         elif mm=="2":
             print("Enter new Password to update: ")
-            self.user_data[1]=input()
+            self.student_data[1]=input()
             print("Password updated successfully")
             self.update_profile()
         elif mm=="3":
             print("Enter new Full Name to update: ")
-            self.user_data[2]=input()
+            self.student_data[2]=input()
             print("Full Name updated successfully")
             self.update_profile()
         elif mm=="4":
             print("Enter new Phone to update: ")
-            self.user_data[3]=input()
+            self.student_data[3]=input()
             print("Phone update successfully")
             self.update_profile()
         elif mm=="5":
             print("Enter new Address to update: ")
-            self.user_data[4]=input()
+            self.student_data[4]=input()
             print("Address update successfully")
             self.update_profile()
         elif mm=="6":
@@ -248,27 +248,27 @@ class user:
 
 def take_input(food_data,prev_orders):
     
-        user_input=input()
-        if user_input=="1": #admin login
-            ad_email=input("Enter admin email: ")
-            ad_pass= input("Enter admin password: ")
+        student_input=input()
+        if student_input=="1": #teacher login
+            te_email=input("Enter teacher email: ")
+            te_pass= input("Enter teacher password: ")
             print()
-            if ad_email=="admin-saradeepika@gmail.com" and ad_pass=="password":
-                admin_login=admin(ad_email,ad_pass,food_data)
-                admin_login()
+            if te_email=="teacher-saradeepika@gmail.com" and te_pass=="sara123":
+                teacher_login=teacher(ad_email,ad_pass,food_data)
+                teacher_login()
             else:
                 print("Please enter correct email and password")
                 choose()
     
-        elif user_input=="2": #new user
+        elif student_input=="2": #new student
             full_name=input("Enter your full name: ")
             phone=input("Enter your phone number: ")
             email=input("Enter your email address: ")
             address=input("Enter your address: ")
             password=input("Enter your password: ")
-            create_user=user(email,password,full_name,phone,address,food_data,prev_orders)
-            create_user.create()
-        elif user_input=="3":
+            create_student=student(email,password,full_name,phone,address,food_data,prev_orders)
+            create_student.create()
+        elif student_input=="3":
             sys.exit()
 
         else:
@@ -279,10 +279,10 @@ def take_input(food_data,prev_orders):
 
 def choose():
     print("\nChoose any one option from the following :")
-    print("1.Admin login \n2.User Login \n3.Exit\n")
-    take_input([["Tandoori Chicken","4 pieces","INR 240","10% OFF",2],
-    ["Vegan Burger","1 piece","INR 320","10% OFF",2],
-    ["Truffle Cake","500 gm","INR 900","10% OFF",2]],[])
+    print("1.teacher login \n2.student Login \n3.Exit\n")
+    take_input((("Tandoori Chicken","4 pieces","INR 240","10% OFF",2),
+    ("Vegan Burger","1 piece","INR 320","10% OFF",2),
+    ("Truffle Cake","500 gm","INR 900","10% OFF",2)),[])
 
 
 print("Welcome to Food Ordering App")
